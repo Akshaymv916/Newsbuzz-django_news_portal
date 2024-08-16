@@ -1,0 +1,109 @@
+{% extends 'base1.html' %}
+{% block style %}
+<style>
+    /* General styling for the About Us section */
+.about-details {
+    background-color: #f9f9f9; /* Light background color for the section */
+    padding: 50px 0; /* Top and bottom padding */
+    font-family: 'Open Sans', sans-serif; /* Font family for the text */
+    color: #333; /* Text color */
+}
+
+
+.about-details h4 {
+    font-size: 36px; /* Font size for the main heading */
+    font-weight: 700; /* Bold text */
+    margin-bottom: 30px; /* Space below the heading */
+    color: #2D55D1; /* Heading color */
+}
+
+.about-details p {
+    font-size: 20px; /* Font size for the paragraphs */
+    line-height: 1.6; /* Line height for better readability */
+    margin-bottom: 20px; /* Space below the paragraphs */
+}
+
+.about-details h5 {
+    font-size: 24px; /* Font size for subheadings */
+    font-weight: 600; /* Semi-bold text */
+    margin-top: 30px; /* Space above the subheadings */
+    color: #2D55D1; /* Subheading color */
+}
+
+.about-details ul {
+    list-style-type: disc; /* Bullet points for the list */
+    padding-left: 20px; /* Padding for the list items */
+    margin-top: 20px; /* Space above the list */
+}
+
+.about-details ul li {
+    font-size: 18px; /* Font size for list items */
+    margin-bottom: 10px; /* Space below each list item */
+}
+
+.container {
+    max-width: 1200px; /* Limit the width of the container */
+    margin: 0 auto; /* Center the container */
+}
+
+.offset-xl-1 {
+    margin-left: 8.333333%; /* Adjust offset for better alignment */
+}
+
+.section-padding30 {
+    padding: 30px 0; /* Padding for sections */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .about-details h4 {
+        font-size: 28px; /* Adjust heading size on smaller screens */
+    }
+
+    .about-details p, .about-details ul li {
+        font-size: 16px; /* Adjust paragraph and list item size */
+    }
+
+    .about-details h5 {
+        font-size: 20px; /* Adjust subheading size */
+    }
+}
+
+</style>
+{% endblock %}
+{% block content %}
+{% load static %}
+<div class="about-details section-padding30">
+    <div class="container">
+        <div class="row">
+            <div class="offset-xl-1 col-lg-8">
+                <div class="about-details-cap mb-50">
+                    <h4 style="color: #2D55D1;">About Us</h4>
+                    <p style="font-size: 20px;">Welcome to NewsBuzz, your go-to source for the latest and most reliable news from around the world. 
+                       We are committed to bringing you real-time updates on the stories that matter most, across a wide range of categories including politics, business, technology, entertainment, sports, and more.</p>
+                    
+                    <p style="font-size: 20px;">At NewsBuzz, we believe in the power of information. Our team of dedicated journalists and editors 
+                       work tirelessly to ensure that you stay informed with accurate, balanced, and in-depth reporting. 
+                       Whether it's breaking news or insightful analysis, we strive to cover all angles, providing a platform that 
+                       respects diverse perspectives and encourages thoughtful discussions.</p>
+
+                    <h5>Our Mission</h5>
+                    <p style="font-size: 20px;"To deliver timely, factual, and engaging news content that empowers our readers to make informed decisions.</p>
+
+                    <h5>Our Vision</h5>
+                    <p style="font-size: 20px;">To be the most trusted and innovative news portal, shaping the future of news consumption by blending traditional journalism values with modern technology.</p>
+
+                    <h5>Why Choose NewsBuzz?</h5>
+                    <ul>
+                        <li><strong>Credibility:</strong> Our commitment to fact-checking and thorough research ensures that you get news you can trust.</li>
+                        <li><strong>Comprehensive Coverage:</strong> From local stories to global events, we cover it all with depth and precision.</li>
+                        <li><strong>User-Centric Experience:</strong> Our intuitive and responsive platform makes it easy to access news anytime, anywhere.</li>
+                    </ul>
+
+                    <p style="font-size: 20px;">Thank you for choosing NewsBuzz as your trusted news source. Together, let’s stay informed, engaged, and inspired.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

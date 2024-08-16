@@ -1,0 +1,161 @@
+{% extends 'base1.html' %}
+{% block style %}
+<style>
+   .boxed-btn {
+    background: #fff;
+    color: #2D55D1 !important;
+    display: inline-block;
+    padding: 18px 44px;
+    font-family: "Barlow", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    border: 0;
+    border: 1px solid #2D55D1;
+    letter-spacing: 3px;
+    text-align: center;
+    color: #2D55D1;
+    text-transform: uppercase;
+    cursor: pointer
+}
+
+.boxed-btn:hover {
+    background: #2D55D1;
+    color: #fff !important;
+    border: 1px solid #2D55D1
+}
+</style>
+{% endblock %}
+{% block content %}
+{% load static %}
+   <!--================Blog Area =================-->
+   <section class="blog_area single-post-area section-padding" style="background-color: black;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-8 posts-list">
+               <div class="single-post">
+                  <div class="feature-img">
+                     <img class="img-fluid" src="{{news.newsimage.url}}" alt="">
+                  </div>
+                  <div class="blog_details">
+                     <h2 style="color: white;">{{news.newstitle}}
+                     </h2>
+                     <ul class="blog-info-link mt-3 mb-4">
+                        <li style="color: white;"><a href="#"><i class="fa fa-user"></i> {{news.cat_id.category_name}}</a></li>
+
+                     </ul>
+                     <p class="excert" style="color: white;font-size: 18px;",>
+                        {{news.newsdetails | linebreaksbr }}
+                     </p>
+                    
+                   
+                  </div>
+               </div>
+             
+          
+               <div class="comments-area">
+                  <h4 style="color: white;">Comments</h4>
+                  {% if com %}
+                  {% for i in com  %}
+                  <div class="comment-list">
+                     <div class="single-comment justify-content-between d-flex">
+                        <div class="user justify-content-between d-flex">
+                           <div class="thumb">
+                              <img src="{% static 'assets1/img/comment/comment_1.png'%}" alt="">
+                           </div>
+                           <div class="desc">
+                              <p class="comment" style="color: white;">
+                                {{i.comment}}
+                              </p>
+                              <div class="d-flex justify-content-between">
+                                 <div class="d-flex align-items-center">
+                                    <h5 style="color: white;">
+                                       <a href="#"> {{i.name}}</a>
+                                    </h5>
+                                    <p class="date">{{i.posted_date}}</p>
+                                 </div>
+                               
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  {% endfor %}
+                                                {% else %}
+                                                
+                                                <div class="col-lg-4 col-md-6 single-exhibition">
+                                                    <p style="font-size: 20px; color:wheat">No Comments available.</p>
+                                                </div>
+                                                {% endif %}
+                 
+                  
+               </div>
+               <div class="comment-form">
+                  <h4 style="color: white;">Leave a Reply</h4>
+                  <form class="form-contact comment_form" action="{% url 'comment' %}" method="POST">
+                    {% csrf_token %}
+                     <div class="row">
+                        <div class="col-12">
+                           <div class="form-group">
+                              <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
+                                 placeholder="Write Comment" style="color: white;"></textarea>
+                                 <input class="form-control" name="post_id" id="post_id"  type="hidden" value="{{news.id}}">
+                           </div>
+                        </div>
+                        <div class="col-sm-6">
+                           <div class="form-group">
+                              <input class="form-control" name="name" id="name" type="text" placeholder="Name" style="color: white;">
+                           </div>
+                        </div>
+                        <div class="col-sm-6">
+                           <div class="form-group">
+                              <input class="form-control" name="email" id="email" type="email" placeholder="Email" style="color: white;">
+                           </div>
+                        </div>
+                    
+                     </div>
+                     <div class="form-group">
+                        <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send Message</button>
+                     </div>
+                  </form>
+               </div>
+            </div>
+            <div class="col-lg-4">
+               <div class="blog_right_sidebar" >
+                
+                  <aside class="single_sidebar_widget post_category_widget" style="background-color: #171717;">
+                     <h4 class="widget_title" style="color: white;">Category</h4>
+                     <ul class="list cat-list">
+                        {% for category in cat_count %}
+                        <li>
+                           <a href="{% url 'category_details' id=category.id %}" class="d-flex">
+                              <p style="color: white;">{{category.category_name}}</p>
+                              <p style="color: white;">({{ category.news_count}})</p>
+                           </a>
+                        </li>{% endfor %}
+                      
+                     </ul>
+                  </aside>
+                  <aside class="single_sidebar_widget popular_post_widget" style="background-color: #171717;">
+                     <h3 class="widget_title" style="color: white;">Recent Post</h3>
+                     {% for i in recent  %}
+                     <div class="media post_item">
+
+                        <img src="{{i.newsimage.url}}" alt="post" width="100" height="100">
+                        <div class="media-body">
+                           <a href="{% url 'singlenews' i.id %}">
+                              <h3 style="color: white;">{{i.newstitle}}</h3>
+                           </a>
+                           <p>{{i.news_post_date}}</p>
+                        </div>
+                     </div>{% endfor %}
+                    
+                   
+                     
+                  </aside>
+                  
+                  
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>{% endblock %}
