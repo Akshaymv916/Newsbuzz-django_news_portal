@@ -18,6 +18,15 @@ Introducing **NewsBuzz**, a Django-powered news portal where users can view the 
 - **Comments:** Users can comment on news articles.
 - **Comment Moderation:** Admins can approve or disapprove comments before they appear on the site, ensuring quality discussions.
 
+
+![Description of the image](screenshots/Screenshot%20(254).png)
+
+![Description of the image](screenshots/Screenshot%20(255).png)
+
+![Description of the image](screenshots/Screenshot%20(257).png)
+
+
+
 ## Technologies Used
 
 - **Backend:** Django
